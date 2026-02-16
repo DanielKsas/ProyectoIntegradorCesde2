@@ -7,6 +7,21 @@
     --fluorescent-pink: #ff00ff;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('/Imagenes/backgroundCarrousel.jpeg');
+  background-size: cover;
+  z-index: -1;
+}
+
 .custom-navbar {
   height: 50px;
   background-color: var(--purple) !important;
@@ -178,7 +193,6 @@ section#inicio .container h1 {
     color: var(--purple);
     font-size: 7rem;
     font-weight: 300;
-    font-family: 'Times New Roman', Times, serif;
     text-align: center;
     width: 100%;
     margin: 0;
@@ -279,6 +293,7 @@ section#inicio .container p {
 }
 
 .product-card p {
+  color: #ffffff;
   margin: 0;
   height: 7rem;
   display: flex;
@@ -326,7 +341,6 @@ section#inicio .container p {
 }
 
 .track {
-  background-image: url(/Imagenes/backgroundCarrousel.jpeg);
   overflow: hidden;
   width: 100%;
 }
@@ -401,60 +415,173 @@ section#inicio .container p {
   }
 }
 
-section#servicios .container {
-  width: 100%;
-  justify-content: center;
-  text-align: center;
+section#productos .container {
+text-align: center;
 }
 
-
-section#servicios .container > .cardInf {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+section#productos h2 {
+  margin-bottom: 0px;
 }
 
-section#servicios .container div {
+.focus-gallery {
+  font-family: 'Times New Roman', Times, serif;
   display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  height: 100vh;
   align-items: center;
-  justify-content: space-between;
-  color: white;
-  
+  gap: 200px;
+  padding: 0 calc(50vw - 150px);
+  scrollbar-width: none;
+ 
 }
 
-section#servicios .container .cardInf {
-  max-width: 100%;
-  background-color: #18022b;
-  padding: 2rem;
+.focus-gallery::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+  flex: 0 0 300px;
+  height: 400px;
+  color: white;
   border-radius: 10px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--fluorescent-pink), var(--purple));
+  scroll-snap-align: center;
+  animation:  pop-in linear both;
+  animation-timeline: view(x);
 }
 
-section#servicios .container .cardInf h3 {
+.item > img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+}
+.item > p {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.8rem;
+  font-weight: 400;
   margin: 0 0 1rem 0;
-  font-size: 1.3rem;
-  color: white;
 }
-
-section#servicios .container .cardInf p {
-  margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: white;
-}
-
-@media (max-width: 768px) {
-  section#servicios .container > .cardInf {
-    display: flex;
-    margin: 1rem 0;
-    width: 100%;
+@keyframes pop-in {
+  0% {
+    transform: scale(.5) rotate(-10deg) ;
+    opacity: .3;
+  }
+  50% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(.5) rotate(10deg);
+    opacity: .3;
   }
 }
 
+.product-controls{
+  display:flex;
+  flex-direction:column;
+  gap:0.75rem;
+  width:100%;
+  align-items:center;
+}
+.qty-select{
+  border-radius:8px;
+  padding:0.6rem 0.75rem;
+  font-size:0.95rem;
+  width:90%;
+  max-width:280px;
+}
+.qty-select option{
+  text-align: center;
+  background-color:#333;
+  color:white;
+  padding:0.5rem;
+}
+.add-to-cart {
+  width:90%;
+  max-width:280px;
+}
+@media(max-width:576px){
+  .qty-select{ font-size:0.85rem; }
+  .add-to-cart{ padding:0.4rem 0.75rem; }
+}
+
+
+
+
+section#servicios .container {
+  display: grid;
+  text-align: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  width: 100%;
+  align-items: start;
+}
+
+section#servicios .container > h2 {
+  grid-column: 1 / -1;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.cardInf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1.5rem;
+}
+
+.cardInf img {
+  max-width: 100%;
+  width: 300px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.cardInf h3 {
+  color: var(--purple);
+  margin-bottom: 1rem;
+}
+
+.cardInf p {
+  color: black;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .cardInf img {
+    width: 150px;
+  }
+}
+
+@media (max-width: 576px) {
+  .cardInf {
+    padding: 1rem;
+  }
+  
+  .cardInf img {
+    width: 120px;
+  }
+  
+  .cardInf h3 {
+    font-size: 1.2rem;
+  }
+  
+  .cardInf p {
+    font-size: 0.85rem;
+  }
+}
 
 .site-footer {
     font-family: 'Times New Roman', Times, serif ;
-    background-image: url(/Imagenes/backgroundCarrousel.jpeg) ;
     color: #ffffff;
     padding: 150px 0;
     text-align: center;
@@ -617,5 +744,4 @@ select.custom-input {
     padding: 0.5rem;
   }
 }
-
 

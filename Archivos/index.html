@@ -42,23 +42,26 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-        <div class="d-flex align-items-center navbar-right">
-    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
-        Iniciar Sesión
-    </a>
-    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">
-        Registrarse
-    </a>
-    <a class="nav-link" href="#carrito" aria-label="Carrito de compras">
-        <i class="bi bi-cart-fill"></i>
-    </a>
-</div>
+            <div class="d-flex align-items-center navbar-right">
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    Iniciar Sesión
+                </a>
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">
+                    Registrarse
+                </a>
+                <a class="nav-link position-relative" href="#" data-bs-toggle="modal" data-bs-target="#cartModal"
+                    aria-label="Carrito de compras" id="cartButton">
+                    <i class="bi bi-cart-fill"></i>
+                    <span class="badge bg-danger rounded-pill cart-count position-absolute"
+                        style="top:-6px; right:-6px; font-size:0.7rem; display:none;">0</span>
+                </a>
+            </div>
         </div>
     </nav>
 
 
-    <div class="main-content row m-1 p-3">
-        <Section id="inicio" class="tarjeta text-center py-5 col-12">
+    <div class="main-content">
+        <Section id="inicio" class="bg-white tarjeta text-center py-5 col-12">
             <div class="container">
                 <h1>Magia Epigea</h1>
                 <div class="content-wrapper">
@@ -73,7 +76,7 @@
     </div>
 
     </Section>
-    <Section id="galeria" class=" bg-white text-center py-5 col-12">
+    <Section id="galeria" class=" text-center py-5 col-12">
         <div class="container">
             <h2>Galeria</h2>
             <div class="track">
@@ -127,39 +130,130 @@
             </p>
         </div>
     </Section>
-    <Section id="productos" class="bg-light text-center py-5 col-12">
+    <Section id="productos" class="text-center py-5 col-12">
         <div class="container">
             <h2>Productos</h2>
-            <p class="lead">Ofrecemos una amplia variedad de semillas, cuidadosamente seleccionadas y cultivadas
-                para asegurar
-                su pureza genética y calidad superior. Nuestro catálogo incluye semillas para diferentes tipos de
-                cultivos, adaptadas a diversas condiciones climáticas y necesidades agrícolas. Cada lote de
-                semillas viene con certificaciones que garantizan su origen y características, brindando confianza
-                a nuestros clientes.</p>
+            <div class="focus-gallery">
+                <div class="item">
+                    <p>Cachalote</p>
+                    <img src="/Imagenes/flowerOne.jpg" alt="Semillas 1">
+                    <div class="product-controls">
+                        <select class="form-control qty-select custom-input">
+                            <option value="1">1 semilla - 25.000 COP</option>
+                            <option value="3">3 semillas - 70.000 COP</option>
+                            <option value="5">5 semillas - 110.000 COP</option>
+                            <option value="10">10 semillas - 200.000 COP</option>
+                            <option value="25">25 semillas - 450.000 COP</option>
+                            <option value="100">100 semillas - 1.600.000 COP</option>
+                        </select>
+                        <button type="button" class="btn custom-btn add-to-cart">Agregar al carrito</button>
+                    </div>
+
+                </div>
+                <div class="item">
+                    <p>Early Skunk</p>
+                    <img src="/Imagenes/flowerTwo.jpg" alt="Semillas 2">
+                    <div class="product-controls">
+                        <select class="form-control qty-select custom-input">
+                            <option value="1">1 semilla - 25.000 COP</option>
+                            <option value="3">3 semillas - 70.000 COP</option>
+                            <option value="5">5 semillas - 110.000 COP</option>
+                            <option value="10">10 semillas - 200.000 COP</option>
+                            <option value="25">25 semillas - 450.000 COP</option>
+                            <option value="100">100 semillas - 1.600.000 COP</option>
+                        </select>
+                        <button type="button" class="btn custom-btn add-to-cart">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <p>White Widow</p>
+                    <img src="/Imagenes/flowerThree.jpg" alt="Semillas 3">
+                    <div class="product-controls">
+                        <select class="form-control qty-select custom-input">
+                            <option value="1">1 semilla - 25.000 COP</option>
+                            <option value="3">3 semillas - 70.000 COP</option>
+                            <option value="5">5 semillas - 110.000 COP</option>
+                            <option value="10">10 semillas - 200.000 COP</option>
+                            <option value="25">25 semillas - 450.000 COP</option>
+                            <option value="100">100 semillas - 1.600.000 COP</option>
+                        </select>
+                        <button type="button" class="btn custom-btn add-to-cart">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <p>OG Kush</p>
+                    <img src="/Imagenes/flowerFour.jpg" alt="Semillas 4">
+                    <div class="product-controls">
+                        <select class="form-control qty-select custom-input">
+                            <option value="1">1 semilla - 25.000 COP</option>
+                            <option value="3">3 semillas - 70.000 COP</option>
+                            <option value="5">5 semillas - 110.000 COP</option>
+                            <option value="10">10 semillas - 200.000 COP</option>
+                            <option value="25">25 semillas - 450.000 COP</option>
+                            <option value="100">100 semillas - 1.600.000 COP</option>
+                        </select>
+                        <button type="button" class="btn custom-btn add-to-cart">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <p>Blue Dream</p>
+                    <img src="/Imagenes/flowerFive.jpg" alt="Semillas 5">
+                    <div class="product-controls">
+                        <select class="form-control qty-select custom-input">
+                            <option value="1">1 semilla - 25.000 COP</option>
+                            <option value="3">3 semillas - 70.000 COP</option>
+                            <option value="5">5 semillas - 110.000 COP</option>
+                            <option value="10">10 semillas - 200.000 COP</option>
+                            <option value="25">25 semillas - 450.000 COP</option>
+                            <option value="100">100 semillas - 1.600.000 COP</option>
+                        </select>
+                        <button type="button" class="btn custom-btn add-to-cart">Agregar al carrito</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <p>Girl Scout Cookies</p>
+                    <img src="/Imagenes/flowerSix.jpg" alt="Semillas 6">
+                    <div class="product-controls">
+                        <select class="form-control qty-select custom-input">
+                            <option value="1">1 semilla - 25.000 COP</option>
+                            <option value="3">3 semillas - 70.000 COP</option>
+                            <option value="5">5 semillas - 110.000 COP</option>
+                            <option value="10">10 semillas - 200.000 COP</option>
+                            <option value="25">25 semillas - 450.000 COP</option>
+                            <option value="100">100 semillas - 1.600.000 COP</option>
+                        </select>
+                        <button type="button" class="btn custom-btn add-to-cart">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </Section>
-    <Section id="servicios" class="bg-white text-center py-5 col-12">
+    <Section id="servicios" class="bg-white">
         <div class="container">
             <h2>Nuestros servicios</h2>
             <div class="cardInf">
-                 <div><h3>Aseroria de germinacion y cuidados</h3>
-                <p>Semillas como producto legal
-                    Cultivo regulado
-                    Alcance del negocio
-                    Responsabilidad del comprador
-                    Licencias y requisitos oficiales
+                <h3>Asesoria de germinacion y cuidados</h3>
+                <img src="/Imagenes/asesoria.jpg" alt="">
+                <p>Maximizamos el potencial de nuestras genéticas con protocolos expertos para asegurar cosechas de
+                    grado médico.
                 </p>
-            </div>
-            <div class="cardInf"><h3>Asesoria legal</h3>
-                <p>Semillas como producto legal
-                    Cultivo regulado
-                    Alcance del negocio
-                    Responsabilidad del comprador
-                    Licencias y requisitos oficiales
+                <button type="button" class="btn custom-btn" data-bs-toggle="modal"
+                    data-bs-target="#germinationAdvisoryModal" style="margin-top: 1rem;">
+                    Más información
+                </button>
 
-                </p>
             </div>
+            <div class="cardInf">
+                <h3>Asesoria legal</h3>
+                <img src="/Imagenes/legalidad.jpg" alt="">
+                <p>Blindamos tu inversión gestionando licencias y garantizando total seguridad jurídica.</p>
+                <button type="button" class="btn custom-btn" data-bs-toggle="modal" data-bs-target="#legalAdvisoryModal"
+                    style="margin-top: 1rem;">
+                    Más información
+                </button>
             </div>
+        </div>
         </div>
     </Section>
 
@@ -210,196 +304,389 @@
         <i class="bi bi-arrow-up-circle"></i>
     </a>
 
-<div class="modal fade" id="loginModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content custom-modal">
-      
-      <div class="modal-header">
-        <h5 class="modal-title">
-            <i class="bi bi-person-circle"></i>
-            Iniciar Sesión</h5>
-        
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content custom-modal">
 
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label class="form-label">Correo electrónico</label>
-            <input type="email" class="form-control custom-input" placeholder="correo@email.com">
-          </div>
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-person-circle"></i>
+                        Iniciar Sesión
+                    </h5>
 
-          <div class="mb-3">
-    <label class="form-label">Contraseña</label>
-    
-    <div class="input-group">
-        <input 
-            type="password" 
-            id="loginPassword" 
-            class="form-control custom-input" 
-            placeholder="****">
-            
-        <span class="input-group-text" 
-              style="cursor: pointer; background: transparent; border: 1px solid rgba(255,255,255,0.25); border-left: none; color: white;"
-              onclick="togglePassword('loginPassword', this)">
-            <i class="bi bi-eye"></i>
-        </span>
-    </div>
-</div>
-          <button type="submit" class="btn custom-btn w-100">
-            Entrar
-          </button>
-        </form>
-      </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
 
-    </div>
-  </div>
-</div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control custom-input" placeholder="correo@email.com">
+                        </div>
 
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña</label>
 
+                            <div class="input-group">
+                                <input type="password" id="loginPassword" class="form-control custom-input"
+                                    placeholder="****">
 
-<div class="modal fade" id="registerModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content custom-modal">
-      
-      <div class="modal-header">
-        <h5 class="modal-title">
-            <i class="bi bi-flower1"></i>Crear Cuenta</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
+                                <span class="input-group-text"
+                                    style="cursor: pointer; background: transparent; border: 1px solid rgba(255,255,255,0.25); border-left: none; color: white;"
+                                    onclick="togglePassword('loginPassword', this)">
+                                    <i class="bi bi-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn custom-btn w-100">
+                            Entrar
+                        </button>
+                    </form>
+                </div>
 
-      <div class="modal-body">
-        <form>
-
-
-  <div class="row mb-3">
-    <div class="col-md-6">
-      <label class="form-label">Nombre *</label>
-      <input type="text" class="form-control custom-input" placeholder="Nombre" required>
-    </div>
-
-    <div class="col-md-6">
-      <label class="form-label">Segundo nombre (opcional)</label>
-      <input type="text" class="form-control custom-input" placeholder="Segundo nombre">
-    </div>
-  </div>
-
-
-  <div class="row mb-3">
-    <div class="col-md-6">
-      <label class="form-label">Apellido *</label>
-      <input type="text" class="form-control custom-input" placeholder="Apellido" required>
-    </div>
-
-    <div class="col-md-6">
-      <label class="form-label">Segundo apellido (opcional)</label>
-      <input type="text" class="form-control custom-input" placeholder="Segundo apellido">
-    </div>
-  </div>
-
-
-  <div class="mb-3">
-    <label class="form-label">Fecha de nacimiento *</label>
-    <input type="date" class="form-control custom-input" required>
-  </div>
-
-
-  <div class="mb-3">
-    <label class="form-label">Correo electrónico *</label>
-    <input type="email" class="form-control custom-input" placeholder="correo@email.com" required>
-  </div>
-
- 
-  <div class="row mb-3">
-    <div class="col-md-6">
-        <label class="form-label">Contraseña *</label>
-        
-        <div class="input-group">
-            <input 
-                type="password" 
-                id="registerPassword"
-                class="form-control custom-input" 
-                placeholder="****" 
-                required>
-                
-            <span class="input-group-text" 
-                  style="cursor: pointer; background: transparent; border: 1px solid rgba(255,255,255,0.25); border-left: none; color: white;"
-                  onclick="togglePassword('registerPassword', this)">
-                <i class="bi bi-eye"></i>
-            </span>
+            </div>
         </div>
     </div>
 
-    <div class="col-md-6">
-        <label class="form-label">Confirmar contraseña *</label>
-        <input type="password" class="form-control custom-input" placeholder="****" required>
+
+
+    <div class="modal fade" id="registerModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content custom-modal">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-flower1"></i>Crear Cuenta
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form>
+
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Nombre *</label>
+                                <input type="text" class="form-control custom-input" placeholder="Nombre" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Segundo nombre (opcional)</label>
+                                <input type="text" class="form-control custom-input" placeholder="Segundo nombre">
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Apellido *</label>
+                                <input type="text" class="form-control custom-input" placeholder="Apellido" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Segundo apellido (opcional)</label>
+                                <input type="text" class="form-control custom-input" placeholder="Segundo apellido">
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label class="form-label">Fecha de nacimiento *</label>
+                            <input type="date" class="form-control custom-input" required>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label class="form-label">Correo electrónico *</label>
+                            <input type="email" class="form-control custom-input" placeholder="correo@email.com"
+                                required>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Contraseña *</label>
+
+                                <div class="input-group">
+                                    <input type="password" id="registerPassword" class="form-control custom-input"
+                                        placeholder="****" required>
+
+                                    <span class="input-group-text"
+                                        style="cursor: pointer; background: transparent; border: 1px solid rgba(255,255,255,0.25); border-left: none; color: white;"
+                                        onclick="togglePassword('registerPassword', this)">
+                                        <i class="bi bi-eye"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Confirmar contraseña *</label>
+                                <input type="password" class="form-control custom-input" placeholder="****" required>
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label class="form-label">Número de contacto</label>
+                            <div class="input-group">
+                                <select class="form-select custom-input" style="max-width: 110px;">
+                                    <option value="+57">+57</option>
+                                    <option value="+52">+52</option>
+                                    <option value="+54">+54</option>
+                                    <option value="+56">+56</option>
+                                    <option value="+1">+1</option>
+                                </select>
+
+                                <input type="tel" class="form-control custom-input" placeholder="300 123 4567"
+                                    pattern="[0-9 ]{7,12}">
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label class="form-label">Uso previsto de las semillas (opcional)</label>
+                            <select class="form-control custom-input">
+                                <option value="">Selecciona una opción</option>
+                                <option>Colección genética</option>
+                                <option>Investigación / estudio</option>
+                                <option>Cultivo personal (donde sea legal)</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" required>
+                            <label class="form-check-label">
+                                Confirmo que soy mayor de 18 años
+                            </label>
+                        </div>
+
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" required>
+                            <label class="form-check-label">
+                                Acepto los términos y condiciones
+                            </label>
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" required>
+                            <label class="form-check-label">
+                                Acepto la responsabilidad legal sobre el uso de las semillas
+                            </label>
+                        </div>
+
+
+                        <button type="submit" class="btn custom-btn w-100">
+                            Registrarse
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
     </div>
-</div>
 
-
-<div class="mb-3">
-    <label class="form-label">Número de contacto</label>
-    <div class="input-group">
-        <select class="form-select custom-input" 
-        style="max-width: 110px;">
-    <option value="+57">+57</option>
-    <option value="+52">+52</option>
-    <option value="+54">+54</option>
-    <option value="+56">+56</option>
-    <option value="+1">+1</option>
-</select>
-
-<input type="tel"
-class="form-control custom-input"
-placeholder="300 123 4567"
-pattern="[0-9 ]{7,12}">
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content custom-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title">Carrito</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="cart-items list-group" id="cartItems">
+                        <div class="text-muted">No hay productos en el carrito.</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn custom-btn" id="checkoutBtn">Ir al pago</button>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
+    <!-- Germination Advisory Modal -->
+    <div class="modal fade" id="germinationAdvisoryModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content custom-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-flower2"></i> Asesoría de Germinación y Cuidados
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="mb-3" style="color: var(--green);">Proceso de Germinación</h6>
+                    <p style="color: white;">
+                        La germinación es el primer paso crucial para asegurar el crecimiento exitoso de las plantas. Un
+                        proceso adecuado aumenta significativamente la tasa de éxito.
+                    </p>
 
-  <div class="mb-3">
-    <label class="form-label">Uso previsto de las semillas (opcional)</label>
-    <select class="form-control custom-input">
-      <option value="">Selecciona una opción</option>
-      <option>Colección genética</option>
-      <option>Investigación / estudio</option>
-      <option>Cultivo personal (donde sea legal)</option>
-    </select>
-  </div>
+                    <h6 class="mb-2" style="color: var(--green);">1. Métodos de Germinación</h6>
+                    <ul style="font-size: 0.9rem; line-height: 1.6; color: white;">
+                        <li><strong>Papel húmedo:</strong> Coloca las semillas entre papel húmedo y colócalas en un
+                            lugar oscuro y cálido (20-25°C).</li>
+                        <li><strong>Agua directa:</strong> Sumergir las semillas en agua destilada durante 12-24 horas
+                            hasta que muestren la raicilla.</li>
+                        <li><strong>Sustrato directo:</strong> Plantar directamente en sustrato húmedo manteniendo
+                            temperatura y humedad controladas.</li>
+                        <li><strong>Almácigo:</strong> Usar bandejas de almácigo con sustrato especial para semillas.
+                        </li>
+                    </ul>
 
+                    <h6 class="mb-2" style="color: var(--green);">2. Condiciones Óptimas</h6>
+                    <ul style="font-size: 0.9rem; line-height: 1.6; color: white;">
+                        <li><strong>Temperatura:</strong> 20-25°C durante el día y 15-20°C en la noche.</li>
+                        <li><strong>Humedad:</strong> 70-80% para una germinación efectiva.</li>
+                        <li><strong>Luz:</strong> Oscuridad total durante la germinación; luz indirecta cuando broten.
+                        </li>
+                        <li><strong>Aireación:</strong> Garantiza circulación de aire para evitar hongos y enfermedades.
+                        </li>
+                    </ul>
 
-  <div class="form-check mb-2">
-    <input class="form-check-input" type="checkbox" required>
-    <label class="form-check-label">
-      Confirmo que soy mayor de 18 años
-    </label>
-  </div>
+                    <h6 class="mb-2" style="color: var(--green);">3. Cuidados en Fase Vegetativa</h6>
+                    <ul style="font-size: 0.9rem; line-height: 1.6; color: white;">
+                        <li><strong>Riego:</strong> Mantén el sustrato húmedo pero no encharcado; alterna entre riegos.
+                        </li>
+                        <li><strong>Luz:</strong> 16-18 horas diarias de luz para promover crecimiento vegetativo.</li>
+                        <li><strong>Nutrientes:</strong> Usa fertilizantes ricos en nitrógeno (N) para el desarrollo
+                            foliar.</li>
+                        <li><strong>Podas:</strong> Realiza podas suaves para controlar altura y fomentar ramificación.
+                        </li>
+                    </ul>
 
-  <div class="form-check mb-2">
-    <input class="form-check-input" type="checkbox" required>
-    <label class="form-check-label">
-      Acepto los términos y condiciones
-    </label>
-  </div>
+                    <h6 class="mb-2" style="color: var(--green);">4. Cuidados en Fase Floral</h6>
+                    <ul style="font-size: 0.9rem; line-height: 1.6; color: white;">
+                        <li><strong>Fotoperíodo:</strong> Reduce a 12 horas de luz/12 horas de oscuridad para inducir
+                            floración.</li>
+                        <li><strong>Nutrientes:</strong> Cambia a fórmulas ricas en fósforo (P) y potasio (K).</li>
+                        <li><strong>Riego:</strong> Mantén consistencia; ajusta según evapotranspiración.</li>
+                        <li><strong>Control de CO₂:</strong> Asegura ventilación adecuada en espacios cerrados.</li>
+                    </ul>
 
-  <div class="form-check mb-3">
-    <input class="form-check-input" type="checkbox" required>
-    <label class="form-check-label">
-      Acepto la responsabilidad legal sobre el uso de las semillas
-    </label>
-  </div>
+                    <h6 class="mb-2" style="color: var(--green);">5. Plagas y Enfermedades Comunes</h6>
+                    <ul style="font-size: 0.9rem; line-height: 1.6; color: white;">
+                        <li><strong>Araña roja:</strong> Control con sistemas de riego y humedad; usar acaricidas
+                            naturales si es necesario.</li>
+                        <li><strong>Moho gris (Botrytis):</strong> Mejora aireación y reduce humedad; elimina hojas
+                            infectadas.</li>
+                        <li><strong>Pulgones:</strong> Usa insecticidas orgánicos o agua jabonosa.</li>
+                        <li><strong>Deficiencias nutricionales:</strong> Ajusta concentraciones de N-P-K según síntomas
+                            foliares.</li>
+                    </ul>
 
+                    <h6 class="mb-2" style="color: var(--green);">6. Cosecha y Secado</h6>
+                    <ul style="font-size: 0.9rem; line-height: 1.6; color: white;">
+                        <li><strong>Momento óptimo:</strong> Cuando los estigmas (pistilos) cambian de blanco a
+                            marrón/rojo.</li>
+                        <li><strong>Secado:</strong> 7-14 días en ambiente oscuro, bien ventilado, a 15-20°C y 50-60%
+                            HR.</li>
+                        <li><strong>Curado:</strong> Coloca en frascos herméticos durante 2-4 semanas, abriendo
+                            diariamente.</li>
+                        <li><strong>Almacenamiento:</strong> Guarda en lugar fresco, oscuro y seco para preservar
+                            calidad.</li>
+                    </ul>
 
-  <button type="submit" class="btn custom-btn w-100">
-    Registrarse
-  </button>
-
-</form>
-      </div>
-
+                    <div
+                        style="background-color: rgba(0, 255, 27, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1.5rem;">
+                        <p style="font-size: 0.85rem; margin: 0; color: white;">
+                            <strong>💡 Consejo:</strong> Mantén registros detallados de temperatura, humedad, riego y
+                            nutrientes para optimizar futuras cosechas y adaptarte a tus condiciones específicas.
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+
+    <!-- Legal Advisory Modal -->
+    <div class="modal fade" id="legalAdvisoryModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content custom-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-shield-check"></i> Asesoría Legal: Cannabis en Colombia
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="mb-3" style="color: var(--green);">Marco Legal Actual</h6>
+                    <p style="color: white;">
+                        En Colombia, el cannabis ha sido despenalizado desde 1994 mediante el Decreto 2104. Sin embargo,
+                        existen regulaciones específicas que aplican según el tipo de uso y cultivo:
+                    </p>
+
+                    <h6 class="mb-2" style="color: var(--green);">1. Semillas como Producto Legal</h6>
+                    <ul style="font-size: 0.9rem; line-height: 1.6; color: white;">
+                        <li><strong>Posesión de semillas:</strong> La venta y posesión de semillas de cannabis con fines
+                            de colección o investigación es legal en Colombia.</li>
+                        <li><strong>Trazabilidad:</strong> Es fundamental contar con documentación clara sobre el origen
+                            y genética de las semillas.</li>
+                        <li><strong>Responsabilidad del vendedor:</strong> El distribuidor debe informar al comprador
+                            sobre sus obligaciones legales.</li>
+                    </ul>
+
+                    <h6 class="mb-2" style="color: var(--green);">2. Cultivo Regulado</h6>
+                    <ul style="font-size: 0.9rem; line-height: 1.6; color: white;">
+                        <li><strong>Licencia requerida:</strong> Para cultivo comercial o medicinal, se requiere
+                            licencia de la Superintendencia de Industria y Comercio (SIC).</li>
+                        <li><strong>Cultivo personal:</strong> A partir de 2023, se permite el cultivo doméstico con
+                            restricciones (máximo 2-4 plantas según la sentencia C-600).</li>
+                        <li><strong>Regulación municipal:</strong> Los municipios pueden establecer prohibiciones
+                            locales.</li>
+                    </ul>
+
+                    <h6 class="mb-2" style="color: var(--green);">3. Alcance del Negocio</h6>
+                    <ul style="font-size: 0.9rem; line-height: 1.6; color: white;">
+                        <li><strong>Venta de semillas (colección):</strong> Permitida sin licencia especial, pero
+                            documentada.</li>
+                        <li><strong>Cultivo medicinal:</strong> Requiere licencia y autorización del Ministerio de
+                            Salud.</li>
+                        <li><strong>Cultivo recreativo:</strong> Aún está limitado; principalmente enfocado en
+                            investigación y usos medicinales.</li>
+                    </ul>
+
+                    <h6 class="mb-2" style="color: var(--green);">4. Responsabilidad del Comprador</h6>
+                    <ul style="font-size: 0.9rem; line-height: 1.6; color: white;">
+                        <li><strong>Uso autorizado:</strong> El comprador es responsable de cumplir con la normativa
+                            local y nacional.</li>
+                        <li><strong>No cultivo ilegal:</strong> El comprador debe asegurarse de que su cultivo (si lo
+                            realiza) cumple con regulaciones municipales.</li>
+                        <li><strong>Consentimiento legal:</strong> Mayoría de edad y conocimiento de leyes aplicables.
+                        </li>
+                    </ul>
+
+                    <h6 class="mb-2" style="color: var(--green);">5. Licencias y Requisitos Oficiales</h6>
+                    <ul style="font-size: 0.9rem; line-height: 1.6; color: white;">
+                        <li><strong>Para productores:</strong> Registro ante la SIC, antecedentes limpios, entre otros.
+                        </li>
+                        <li><strong>Documentación:</strong> Certificados de origen, análisis de calidad, y trazabilidad
+                            completa.</li>
+                        <li><strong>Reportes periódicos:</strong> Control y monitoreo de producción e inventario.</li>
+                    </ul>
+
+                    <div
+                        style="background-color: rgba(0, 255, 27, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1.5rem;">
+                        <p style="font-size: 0.85rem; margin: 0; color: white;">
+                            <strong>⚠️ Aviso:</strong> Esta información es de carácter informativo. Se recomienda
+                            consultar con un abogado especializado en derecho comercial y penal para obtener
+                            asesoramiento legal específico sobre tu situación particular.
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="/Archivos/js.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
