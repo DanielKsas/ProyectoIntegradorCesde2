@@ -8,12 +8,18 @@ if (registerForm) {
         const nombre = registerForm.querySelectorAll('input')[0].value;
         const email = registerForm.querySelector('input[type="email"]').value;
         const password = registerForm.querySelectorAll('input[type="password"]')[0].value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        if(password !== confirmPassword){
+            alert('Las contraseñas no coinciden');
+            return;
+        }
 
         const userData = {
             nombre: nombre,
             email: email,
             password: password
-        };
+        };  
 
         localStorage.setItem('usuarioRegistrado', JSON.stringify(userData));
 
