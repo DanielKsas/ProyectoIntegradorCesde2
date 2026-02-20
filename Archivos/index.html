@@ -42,20 +42,32 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="d-flex align-items-center navbar-right">
-                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
-                    Iniciar Sesión
-                </a>
-                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">
-                    Registrarse
-                </a>
-                <a class="nav-link position-relative" href="#" data-bs-toggle="modal" data-bs-target="#cartModal"
-                    aria-label="Carrito de compras" id="cartButton">
-                    <i class="bi bi-cart-fill"></i>
-                    <span class="badge bg-danger rounded-pill cart-count position-absolute"
-                        style="top:-6px; right:-6px; font-size:0.7rem; display:none;">0</span>
-                </a>
-            </div>
+           <div class="d-flex align-items-center navbar-right">
+    
+    <div id="auth-links" class="d-flex">
+        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+            Iniciar Sesión
+        </a>
+        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">
+            Registrarse
+        </a>
+    </div>
+
+    <div id="user-links" class="d-flex align-items-center d-none">
+        <span class="nav-link text-success fw-bold" id="userNameDisplay" style="margin-right: 10px;"></span>
+        <a class="nav-link" href="#" id="btnLogoutMain">
+            <i class="bi bi-box-arrow-right"></i> Salir
+        </a>
+    </div>
+
+    <a class="nav-link position-relative" href="#" data-bs-toggle="modal" data-bs-target="#cartModal"
+        aria-label="Carrito de compras" id="cartButton">
+        <i class="bi bi-cart-fill"></i>
+        <span class="badge bg-danger rounded-pill cart-count position-absolute"
+            style="top:-6px; right:-6px; font-size:0.7rem; display:none;">0</span>
+    </a>
+</div>
+
         </div>
     </nav>
 

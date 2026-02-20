@@ -47,7 +47,7 @@ if (formInventario) {
         const nuevoProd = {
             id: Math.floor(Math.random() * 1000) + 100, 
             nombre: document.getElementById('nombreInput').value,
-            stock: document.getElementById('stockInput').value,
+            stock: document.getElementById('stockInput').value || 0,
             precio: document.getElementById('precioInput').value,
             estado: document.getElementById('estadoInput').value
         };
@@ -87,3 +87,22 @@ if(btnLogout) {
 }
 
 document.addEventListener('DOMContentLoaded', cargarTabla);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const stockInput = document.getElementById('stockInput');
+    const estadoInput = document.getElementById('estadoInput');
+
+    if (stockInput && estadoInput) {
+        stockInput.addEventListener('input', function() {
+            const cantidad = parseInt(stockInput.value) || 0;
+
+            if (cantidad > 10) {
+                estadoInput.value = 'Activo';
+            } else if (cantidad > 0 && cantidad <= 10) {
+                estadoInput.value = 'Poco Stock';
+            } else {
+                estadoInput.value = 'Inactivo';
+            }
+        });
+    }
+});

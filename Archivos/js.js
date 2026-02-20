@@ -15,18 +15,29 @@ if (registerForm) {
             return;
         }
 
+        // --- MEJORA: Lógica de múltiples usuarios ---
+        const usuariosGuardados = JSON.parse(localStorage.getItem('usuarios')) || [];
+        const existe = usuariosGuardados.find(u => u.email === email);
+
+        if (existe) {
+            alert('Este correo ya está registrado. Intenta iniciar sesión.');
+            return;
+        }
+
         const userData = {
             nombre: nombre,
             email: email,
             password: password
         };  
 
-        localStorage.setItem('usuarioRegistrado', JSON.stringify(userData));
+        usuariosGuardados.push(userData);
+        localStorage.setItem('usuarios', JSON.stringify(usuariosGuardados));
 
         alert('¡Cuenta creada con éxito! Ahora puedes iniciar sesión.');
 
         const modal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
         modal.hide();
+        registerForm.reset();
     });
 }
 
@@ -48,25 +59,24 @@ if (loginForm) {
             return; 
         }  
 
-
+       const listaUsuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+       const usuarioEncontrado = listaUsuarios.find(u => u.email === emailLogin && u.password === passLogin);
        
-        const datosGuardados = localStorage.getItem('usuarioRegistrado');
 
-        if (datosGuardados) {
-            const usuario = JSON.parse(datosGuardados);
-
-            if (emailLogin === usuario.email && passLogin === usuario.password) {
-                alert(`¡Bienvenido de nuevo, ${usuario.nombre}!`);
+        if (usuarioEncontrado) {
+         
+                alert(`¡Bienvenido de nuevo, ${usuarioEncontrado.nombre}!`);
                 sessionStorage.setItem('sesionActiva', 'usuario');
+                sessionStorage.setItem('nombreUsuarioActual', usuarioEncontrado.nombre)
                 
+                sessionStorage.setItem('emailUsuarioActual', usuarioEncontrado.email);
+
                 // Redirige al usuario normal al index.html
                 window.location.href = 'index.html'; 
             } else {
                 alert('Correo o contraseña incorrectos.');
             }
-        } else {
-            alert('No hay ninguna cuenta registrada con estos datos.');
-        }
+        
     });
 }
 
@@ -85,17 +95,70 @@ function togglePassword(inputId, iconSpan) {
       icon.classList.add("bi-eye");
     }
 }
+// --- Lógica de Estado de Sesión ---
+
+function actualizarNavbar() {
+    const authLinks = document.getElementById('auth-links');
+    const userLinks = document.getElementById('user-links');
+    const userNameDisplay = document.getElementById('userNameDisplay');
+    const sesion = sessionStorage.getItem('sesionActiva');
+   
+
+    if (sesion) {
+        
+        if (authLinks) authLinks.classList.add('d-none');
+        if (userLinks) userLinks.classList.remove('d-none');
+
+        if (sesion === 'admin') {
+            userNameDisplay.textContent = "Admin Magia";
+        } else{
+            const nombre = sessionStorage.getItem('nombreUsuarioActual')
+            userNameDisplay.textContent = `Hola, ${nombre || 'Usuario'}`;
+        } 
+        
+    } else {
+        // Si no hay sesión, mostramos botones de auth
+      if (authLinks) authLinks.classList.remove('d-none');
+        if (userLinks) userLinks.classList.add('d-none');
+        if (userNameDisplay) userNameDisplay.textContent = "";
+    }
+}
+
+// Botón de cerrar sesión en el index
+const btnLogoutMain = document.getElementById('btnLogoutMain');
+if (btnLogoutMain) {
+    btnLogoutMain.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        if (confirm("¿Seguro que quieres cerrar sesión?")) {
+            sessionStorage.clear()
+            window.location.href ='index.html'
+        }
+    });
+}
+
+// Ejecutar al cargar la página
+document.addEventListener('DOMContentLoaded', actualizarNavbar);
+
 
 // --- Carrito: cantidad, agregar y renderizar en modal ---
 document.addEventListener('DOMContentLoaded', function () {
-    const CART_KEY = 'magia_cart';
+   
+
+function getCartKey() {
+    const email = sessionStorage.getItem('emailUsuarioActual');
+    
+    return email ? `magia_cart_${email}` : 'magia_cart_invitado';
+}
 
     function getCart() {
-        return JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+        const key = getCartKey();
+        return JSON.parse(localStorage.getItem(key) || '[]');
     }
 
     function saveCart(cart) {
-        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+        const key = getCartKey();
+        localStorage.setItem(key, JSON.stringify(cart));
     }
 
     function updateBadge() {
@@ -107,32 +170,64 @@ document.addEventListener('DOMContentLoaded', function () {
         else { badge.style.display = 'none'; }
     }
 
-    function renderCart() {
+   function renderCart() {
         const container = document.getElementById('cartItems');
         if (!container) return;
         const cart = getCart();
         container.innerHTML = '';
+
         if (cart.length === 0) {
-            container.innerHTML = '<div class="text-muted">No hay productos en el carrito.</div>';
+            container.innerHTML = '<div class="text-muted text-center py-3">No hay productos en el carrito.</div>';
             return;
         }
+
         cart.forEach(item => {
             const div = document.createElement('div');
-            div.className = 'list-group-item d-flex justify-content-between align-items-center cart-item';
+            div.className = 'list-group-item d-flex justify-content-between align-items-center cart-item py-3';
             div.innerHTML = `
-                <div class="d-flex align-items-center" style="gap:.75rem">
-                    <img src="${item.img||''}" alt="" style="width:56px;height:56px;object-fit:cover;border-radius:6px;display:${item.img? 'block':'none'}">
+                <div class="d-flex align-items-center" style="gap:1rem">
+                    <img src="${item.img || ''}" alt="" style="width:60px;height:60px;object-fit:cover;border-radius:8px;display:${item.img ? 'block' : 'none'}">
                     <div>
-                        <strong>${item.title}</strong>
-                        <div class="small">Cantidad: ${item.qty}</div>
+                        <strong class="d-block">${item.title}</strong>
+                        <div class="d-flex align-items-center mt-2" style="gap: 0.5rem;">
+                            <button class="btn btn-sm btn-outline-light text-dark change-qty" data-id="${item.id}" data-action="decrease" style="width:30px; height:30px; padding:0; line-height:1;">-</button>
+                            
+                            <span class="fw-bold mx-2" style="min-width: 20px; text-align: center;">${item.qty}</span>
+                            
+                            <button class="btn btn-sm btn-outline-light text-dark change-qty" data-id="${item.id}" data-action="increase" style="width:30px; height:30px; padding:0; line-height:1;">+</button>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <button class="btn btn-sm btn-outline-danger remove-item" data-id="${item.id}">Eliminar</button>
+                <div class="text-end">
+                    <button class="btn btn-sm btn-link text-danger remove-item p-0" data-id="${item.id}" title="Eliminar">
+                        <i class="bi bi-trash3-fill" style="font-size: 1.2rem;"></i>
+                    </button>
                 </div>`;
             container.appendChild(div);
         });
 
+        // --- Eventos para cambiar cantidad ---
+        container.querySelectorAll('.change-qty').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = this.dataset.id;
+                const action = this.dataset.action;
+                let cart = getCart();
+                const item = cart.find(i => i.id === id);
+
+                if (item) {
+                    if (action === 'increase') {
+                        item.qty += 1;
+                    } else if (action === 'decrease' && item.qty > 1) {
+                        item.qty -= 1;
+                    }
+                    saveCart(cart);
+                    renderCart();
+                    updateBadge();
+                }
+            });
+        });
+
+        // --- Evento para eliminar ---
         container.querySelectorAll('.remove-item').forEach(btn => {
             btn.addEventListener('click', function () {
                 const id = this.dataset.id;
